@@ -1,13 +1,9 @@
-# Sample Hardhat Project
+# Force Send Ether Sample Project
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+- With help of selfdestruct(address) functionality of Solidity, we can destruct self contract and send all ethers in existing contract to the address passed as an argument in function call.
 
-Try running some of the following tasks:
+- This ignores all the condition checks in the called contract and force sends Ether to that contract.
 
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+- To prevent any miss functionality in called contract due to this behaviour, we should store contract ether balance in `state variable` and use them in condition checks rather than directly putting `address(this).balance` expression.
+
+To demonstrate the fix, refer to EthStoreV2. 
